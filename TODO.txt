@@ -1,0 +1,2 @@
+- Separate API into US and UK English.
+- Accept pre-tagged input and compare against tagged rankings.
