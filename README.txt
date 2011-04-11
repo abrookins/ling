@@ -20,8 +20,7 @@ is freely available. You can download ANC data here:
 ling expects to read a file containing these structures from
 "words.clj" after which it parses any words it receives at the API
 endpoints in core.clj and sorts them based on the ANC data for any
-word matches found in the input text. Sorting is based on some weird
-and probably wrong math I concocted.
+word matches found in the input text.
 
 In addition to ranking strings for originality, the API can return
 a list of sentences or words in a given string sorted by the
