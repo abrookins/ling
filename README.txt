@@ -20,13 +20,12 @@ is freely available. You can download ANC data here:
 ling expects to read a file containing these structures from
 "words.clj" after which it parses any words it receives at the API
 endpoints in core.clj and sorts them based on the ANC data for any
-word matches found in the input text. Sorting is based on some weird
-and probably wrong math I concocted.
+word matches found in the input text.
 
-In addition to ranking strings for originality, the API can return
-a list of sentences or words in a given string sorted by the
-"originality" of the words (or sentences) in American English,
-according to the corpus.
+The main intended use of the API is to request a list of sentences 
+or words in a sentence (a list of words) sorted by the "originality" of
+the words (or sentences) in American English, according to the 
+corpus.
 
 This project is under development, largely untested, not intended
 for use in production systems, not packaged for deployment, and is

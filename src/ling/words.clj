@@ -76,8 +76,7 @@
   (reduce + (map #(if (zero? (get-rank %)) 0 1) words)))
 
 (defn originality
-  "Calculate the average log of a set of words scaled to the number of
-  words in the string for which we have a rank."
+  "Calculate the average frequency of words in a given string."
   [string]
   (let [hits (count-word-matches (words string)) rank-sum
         (reduce + (map #(rank-word %) (words string)))]
