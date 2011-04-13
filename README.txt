@@ -29,17 +29,18 @@ in American English, which is found by looking up the word (or
 words) in the ANC data.
 
 You can run a test of the API endpoints using the included suite of
-Python smoke tests (test_api.py) which accept a filename that should
-include some words and sentences. 
+Python smoke tests (test_api.py) which accepts a filename that should
+include some words and sentences, e.g. a news article.
 
 CAVEATS
 
 This project is under development, largely untested, and not intended
 for use in production systems. It is not packaged for deployment,
-and is provided without any warranty or implied warranty.
+and is provided without any warranty or implied warranty. I offer
+it purely to share some things I learned while teaching myself
+Clojure.
 
-I offer it purely to share some things I learned while teaching
-myself Clojure.
+COPYRIGHT
 
 Copyright 2011, Andrew Brookins. Released under the Eclipse Public
 License, same as Clojure.
