@@ -8,7 +8,7 @@ def open_file(filename):
     f = open(filename)
     return f.read().replace("\n", "")
 
-# arguments: filename1, filename2
+# argument: filename
 def main(argv):
     test_string = open_file(argv[0])
     ling = LingClient(HOST)
