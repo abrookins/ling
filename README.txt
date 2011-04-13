@@ -1,6 +1,6 @@
-In its present state, ling is a web service that will sort and rank
-words from JSON input text based on the frequency of their usage
-in American English.
+ling is a web service that will sort and rank words/sentences from
+JSON input text based on the frequency of their usage in American
+English.
 
 INSTALLING
 
