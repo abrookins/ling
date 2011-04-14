@@ -1,6 +1,6 @@
 import sys
 
-from test_client import LingClient
+from ling_client import LingClient
 
 HOST = "localhost"
 
