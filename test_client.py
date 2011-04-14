@@ -12,7 +12,7 @@ import json
 class LingAPIException(Exception):
     pass
 
-class LingClient(object):
+class LingClient:
     """
     A Python client for Ling's JSON API.
     """
