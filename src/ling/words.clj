@@ -6,11 +6,13 @@
             [clojure.contrib.str-utils :as str-utils])
   (:import edu.stanford.nlp.process.DocumentPreprocessor))
 
-(def word-filename "words.clj")
+;; Our database of word frequencies. 
+(def db-filename "db.clj")
 
+(def word-db (atom (data/load-data db-filename)))
+
+;; A processor for chunking words from strings.
 (def processor (atom (DocumentPreprocessor.)))
-
-(def all-words (atom (data/load-data word-filename)))
 
 (defn load-words
      "Load tab-delimited word data from a file."
@@ -55,9 +57,9 @@
   "Get a word's rank from a hash of words.  Try the word first,
   then the word as lowercase."
   [word]
-  (let [rank (get @all-words word 0)]
+  (let [rank (get @word-db word 0)]
     (if (= 0 rank)
-      (get @all-words (str/lower-case word) 0)
+      (get @word-db (str/lower-case word) 0)
       rank)))
 
 (defn rank-word
@@ -122,10 +124,10 @@
   [n strings-to-rank]
   (interesting n strings-to-rank sort-strings-desc))
 
-(defn refresh-words
+(defn refresh-word-db
   "Load the saved hash of word ranks as an atom."
   []
-  (swap! all-words (data/load-data word-filename)))
+  (swap! word-db (data/load-data db-filename)))
 
 (defn find-originality
   "Find the originality of a string."
