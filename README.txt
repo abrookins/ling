@@ -27,6 +27,8 @@ words in a sentence (a list of words) sorted by their "originality"
 in American English, which is found by looking up the word (or
 words) in the ANC data.
 
+A simple Python client is included (ling_client.py).
+
 You can run a test of the API endpoints using the included suite of
 Python smoke tests (test_api.py) which accepts a filename that should
 include some words and sentences, e.g. a news article.
