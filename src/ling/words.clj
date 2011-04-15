@@ -15,23 +15,21 @@
 (def processor (atom (DocumentPreprocessor.)))
 
 (defn load-words
-     "Load tab-delimited word data from a file."
-     [filename]
-     (into {}
-           (map #(let [[word freq ratio] (str-utils/re-split #"\t" %)]
-                   (hash-map word
-                    (if-not (empty? ratio)
+  "Load tab-delimited word data from a file."
+  [filename]
+  (into {}
+        (map #(let [[word freq ratio] (str-utils/re-split #"\t" %)]
+                (hash-map word
+                      (if-not (empty? ratio)
                       ,(Float. ratio)
                       0)))
-                (streams/read-lines filename))))
+             (streams/read-lines filename))))
 
 (defn transform-word
   "Given a map of :word and :latest_rank, create a new map keyed
    on :word with the value :latest_rank."
   [word]
-  (if (and 
-        (contains? word :word)
-        (contains? word :latest_rank)
+  (if (and (contains? word :word) (contains? word :latest_rank)
         (not (nil? (get word :latest_rank))))
     (hash-map (word :word) (word :latest_rank))))
 
