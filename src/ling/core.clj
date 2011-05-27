@@ -17,36 +17,28 @@
        (json-response (words/originality string)))
 
   (PUT "/words/sort/asc" [string]
-       (json-response
-             (vals (words/sort-strings-asc (words/words string)))))
+       (json-response (vals (words/sort-words string "asc"))))
 
   (PUT "/words/sort/desc" [string]
-       (json-response
-             (vals (words/sort-strings-desc (words/words string)))))
+       (json-response (vals (words/sort-words string "desc"))))
 
   (PUT "/words/interesting/least" [string count]
-       (json-response
-            (words/least-interesting (Integer. count) (words/words string))))
+       (json-response (words/least-interesting-words string (Integer. count))))
 
   (PUT "/words/interesting/most" [string count]
-       (json-response
-             (words/most-interesting (Integer. count) (words/words string))))
+       (json-response (words/most-interesting-words string (Integer. count))))
 
   (PUT "/sentences/sort/asc" [string]
-       (json-response
-             (vals (words/sort-strings-asc (words/sentences string)))))
+       (json-response (vals (words/sort-sentences string "asc"))))
 
   (PUT "/sentences/sort/desc" [string]
-       (json-response
-             (vals (words/sort-strings-desc (words/sentences string)))))
+       (json-response (vals (words/sort-sentences string "desc"))))
 
   (PUT "/sentences/interesting/least" [string count]
-       (json-response
-             (words/least-interesting (Integer. count) (words/sentences string))))
+       (json-response (words/least-interesting-sentences string (Integer. count))))
 
   (PUT "/sentences/interesting/most" [string count]
-       (json-response
-            (words/most-interesting (Integer. count) (words/sentences string)))))
+       (json-response (words/most-interesting-sentences string (Integer. count)))))
 
 (def app
      (-> handler
