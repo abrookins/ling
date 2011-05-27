@@ -2,8 +2,6 @@ import sys
 
 from ling_client import LingClient
 
-HOST = "localhost"
-
 def open_file(filename):
     f = open(filename)
     return f.read().replace("\n", "")
@@ -11,7 +9,7 @@ def open_file(filename):
 # argument: filename
 def main(argv):
     test_string = open_file(argv[0])
-    ling = LingClient(HOST)
+    ling = LingClient()
 
     print "Originality of word 'color':"
     print ling.originality("words", "color")

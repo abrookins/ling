@@ -1,7 +1,7 @@
 """ 
 A basic Python client for use with the ling API.
 
-- Finds the originality of a word or sentence in American English
+- Finds the originality of a word or sentence
 - Sorts words or sentences by their originality
 - Finds N most or least interesting words or sentences in a string
 """
@@ -17,7 +17,7 @@ class LingClient:
     A Python client for Ling's JSON API.
     """
 
-    def __init__(self, hostname, port=8080):
+    def __init__(self, hostname="localhost", port=8080):
         self.hostname = hostname
         self.port = port
 

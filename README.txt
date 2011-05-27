@@ -20,9 +20,9 @@ language corpus, the function used to parse values from that file,
 and the database in which to store the parsed results in
 src/ling/conf.clj.
 
-The default configuration is to parse ANC data from the file
-"ANC-token-word.txt", store it in memory and persist it as a Clojure
-data structure to {project_root}/db.clj. 
+The default configuration is to parse American National Corpus data
+from the file "ANC-token-word.txt", store it in memory, and persist
+it as a Clojure data structure to {project_root}/db.clj.
 
 USING
 
