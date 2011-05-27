@@ -1,5 +1,5 @@
-(defproject ling "1.0.0-SNAPSHOT"
-  :description "FIXME: write"
+(defproject ling "1.0.5-SNAPSHOT"
+  :description "Rank words and sentences based on originality within a corpus."
   :dependencies [[org.clojure/clojure "1.2.0"]
                  [org.clojure/clojure-contrib "1.2.0"]
                  [compojure "0.5.2"]
