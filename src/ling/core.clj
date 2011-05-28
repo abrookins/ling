@@ -16,29 +16,17 @@
   (PUT "/words/originality" [string]
        (json-response (words/originality string)))
 
-  (PUT "/words/sort/asc" [string]
-       (json-response (vals (words/sort-words string "asc"))))
+  (PUT "/words/sort/asc" [string limit]
+       (json-response (words/sort-strings string :word :asc (Integer. limit))))
 
-  (PUT "/words/sort/desc" [string]
-       (json-response (vals (words/sort-words string "desc"))))
+  (PUT "/words/sort/desc" [string limit]
+       (json-response (words/sort-strings string :word :desc (Integer. limit))))
 
-  (PUT "/words/interesting/least" [string count]
-       (json-response (words/least-interesting-words string (Integer. count))))
+  (PUT "/sentences/sort/asc" [string limit]
+       (json-response (words/sort-strings string :sentence :asc (Integer. limit))))
 
-  (PUT "/words/interesting/most" [string count]
-       (json-response (words/most-interesting-words string (Integer. count))))
-
-  (PUT "/sentences/sort/asc" [string]
-       (json-response (vals (words/sort-sentences string "asc"))))
-
-  (PUT "/sentences/sort/desc" [string]
-       (json-response (vals (words/sort-sentences string "desc"))))
-
-  (PUT "/sentences/interesting/least" [string count]
-       (json-response (words/least-interesting-sentences string (Integer. count))))
-
-  (PUT "/sentences/interesting/most" [string count]
-       (json-response (words/most-interesting-sentences string (Integer. count)))))
+  (PUT "/sentences/sort/desc" [string limit]
+       (json-response (words/sort-strings string :sentence :desc (Integer. limit)))))
 
 (def app
      (-> handler

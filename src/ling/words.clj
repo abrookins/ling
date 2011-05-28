@@ -94,58 +94,22 @@
 
 (defn partition-sort
   "Sort a list of strings after partitioning with part-fn. Takes 'asc' or 'desc'
-  for direction parameter (for ascending or descending sort)."
-  [part-fn string direction]
-  (case direction
-    "asc" (sort-strings-asc (part-fn string))
-    "desc" (sort-strings-desc (part-fn string))))
-
-(defn most-interesting
-  "Partition a string into a list of strings with part-fn and get the n most
-  interesting strings from the list."
-  [n part-fn strings-to-rank]
-  (top n (part-fn strings-to-rank) sort-strings-asc))
-
-(defn least-interesting
-  "Partition a string into a list of strings with part-fn and get the n least
-  interesting strings from the list."
-  [n part-fn strings-to-rank]
-  (top n (part-fn strings-to-rank) sort-strings-desc))
+  for direction parameter."
+  [part string direction]
+  (let [part-fn (case part
+                  :word words
+                  :sentence sentences)]
+    (case direction
+      :asc (sort-strings-asc (part-fn string))
+      :desc (sort-strings-desc (part-fn string)))))
 
 ;; API
 
-(defn most-interesting-words
-  "Parse a string into a list of words and find the n most interesting words
-  in the list."
-  [string n]
-  (most-interesting n words string))
-
-(defn least-interesting-words
-  "Parse a string into a list of words and find the n least interesting words
-  in the list."
-  [string n]
-  (least-interesting n words string))
-
-(defn most-interesting-sentences
-  "Parse a string into a list of sentences and find the n most interesting
-  sentences in the list."
-  [string n]
-  (most-interesting n sentences string))
-
-(defn least-interesting-sentences
-  "Parse a string into a list of sentences and find the n least interesting
-  sentences in the list."
-  [string n]
-  (least-interesting n sentences string))
-
-(defn sort-words
+(defn sort-strings
   "Parse a string into a list of words and sort the list by direction, where
-  direction is either 'asc' or 'desc'."
-  [string direction]
-  (partition-sort words string direction))
-
-(defn sort-sentences
-  "Parse a string into a list of sentences and sort the list by direction,
-  where direction is either 'asc' or 'desc'."
-  [string direction]
-  (partition-sort sentences string direction))
+  direction is either :asc or :desc."
+  [string part direction limit]
+  (if (> limit 0)
+    (let [ranks (partition-sort part string direction)]
+      (reverse (into '() (map (fn [rank] (val rank)) (take limit ranks)))))
+    (partition-sort part string direction)))

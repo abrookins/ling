@@ -18,29 +18,16 @@ def main(argv):
     print ling.originality("words", "parochial")
 
     print "Words sorted ascending:"
-    print ling.sort("words", test_string, max=100, sort_direction="asc")
+    print ling.sort("words", test_string, limit=100, direction="asc")
 
-    print "Words sorted descending:"
-    print ling.sort("words", test_string, max=100, sort_direction="desc")
+    print "Words directioned descending:"
+    print ling.sort("words", test_string, limit=100, direction="desc")
 
-    print "Sentences sorted ascending:"
-    print ling.sort("sentences", test_string, max=5, sort_direction="asc")
+    print "Sentences directioned ascending:"
+    print ling.sort("sentences", test_string, limit=5, direction="asc")
 
-    print "Sentences sorted descending:"
-    print ling.sort("sentences", test_string, max=5, sort_direction="desc")
-
-    print "Most interesting 100 words:"
-    print ling.interesting("words", test_string, max=100, sort_direction="most")
-
-    print "Least interesting 100 words:"
-    print ling.interesting("words", test_string, max=100, sort_direction="least")
-
-    print "Most interesting 2 sentences:"
-    print ling.interesting("sentences", test_string, max=2, sort_direction="most")
-
-    print "Least interesting 2 sentences:"
-    print ling.interesting("sentences", test_string, max=2, sort_direction="least")
-
+    print "Sentences directioned descending:"
+    print ling.sort("sentences", test_string, limit=5, direction="desc")
 
 if __name__ == "__main__":
     main(sys.argv[1:])
