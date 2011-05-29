@@ -21,14 +21,15 @@
   [input]
   (if (= (type input) java.lang.String)
     ;; .getWordsFromString returns a List of Stanford NLP Word objects.
-    (map (fn [word] (-> word .word)) (.getWordsFromString @processor input))
+    (map (fn [word] (-> word .word)) (-> @processor (.getWordsFromString input)))
     (identity input)))
 
 (defn sentences
   "Convert a string to a collection of sentences."
   [string]
+  ;; .getSentencesFromText returns a list of lists of Word objects
   (map (fn [sentence] (map (fn [word] (-> word .word)) sentence))
-       (.getSentencesFromText @processor (java.io.StringReader. string))))
+       (-> @processor (.getSentencesFromText (java.io.StringReader. string)))))
 
 (defn get-frequency
   "Try to get a word's frequency ratio from the database. Try the word first,
@@ -84,14 +85,6 @@
                   (hash-map orig string))))
              strings-to-sort)))
 
-(defn top
-  "Get top n strings from a list of strings after sorting with sort-fn."
-  [n strings-to-rank sort-fn]
-  (if (or (empty? strings-to-rank) (nil? n))
-    '()
-    (let [ranks (sort-fn strings-to-rank)]
-      (reverse (into '() (map (fn [rank] (val rank)) (take n ranks)))))))
-
 (defn partition-sort
   "Sort a list of strings after partitioning with part-fn. Takes 'asc' or 'desc'
   for direction parameter."
@@ -103,11 +96,9 @@
       :asc (sort-strings-asc (part-fn string))
       :desc (sort-strings-desc (part-fn string)))))
 
-;; API
-
 (defn sort-strings
   "Parse a string into a list of words and sort the list by direction, where
-  direction is either :asc or :desc."
+  direction is either :asc or :desc. This is the public interface."
   [string part direction limit]
   (if (> limit 0)
     (let [ranks (partition-sort part string direction)]
