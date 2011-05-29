@@ -20,13 +20,13 @@ def main(argv):
     print "Words sorted ascending:"
     print ling.sort("words", test_string, limit=100, direction="asc")
 
-    print "Words directioned descending:"
+    print "Words sorted descending:"
     print ling.sort("words", test_string, limit=100, direction="desc")
 
-    print "Sentences directioned ascending:"
+    print "Sentences sorted ascending:"
     print ling.sort("sentences", test_string, limit=5, direction="asc")
 
-    print "Sentences directioned descending:"
+    print "Sentences sorted descending:"
     print ling.sort("sentences", test_string, limit=5, direction="desc")
 
 if __name__ == "__main__":
