@@ -4,7 +4,7 @@
             [clojure.contrib.string :as str])
   (:import edu.stanford.nlp.process.DocumentPreprocessor))
 
-(def ^{:doc "A processor for chunking words from strings."}
+(def ^{:doc "A processor for parsing words and sentences from strings."}
   processor (atom (DocumentPreprocessor.)))
 
 (def ^{:doc "A map of words to frequency ratios."}
