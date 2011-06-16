@@ -2,7 +2,7 @@
   (:require [ling.parsers :as parsers]
             [ling.database.file :as file-db]))
 
-(def ^{:doc "The name of the file file from which to load raw frequency data."}
+(def ^{:doc "The name of the file from which to load raw frequency data."}
   frequencies-filename "ANC-token-word.txt")
 
 (def ^{:doc "The URL from which to download the raw word frequency data."}
