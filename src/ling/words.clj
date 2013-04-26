@@ -3,11 +3,13 @@
             [clojure.string :as str])
   (:import edu.stanford.nlp.process.DocumentPreprocessor))
 
-(def ^{:doc "A processor for parsing words and sentences from strings."}
-  processor (atom (DocumentPreprocessor.)))
+(def processor
+  "A processor for parsing words and sentences from strings."
+  (atom (DocumentPreprocessor.)))
 
-(def ^{:doc "A map of words to frequency ratios."}
-  word-freqs (atom '()))
+(def word-freqs
+  "A map of words to frequency ratios."
+  (atom '()))
 
 (defn init-word-freqs
   "Load the saved map of words and frequency ratios."
