@@ -4,3 +4,5 @@ target
 .lein-repl-history
 *.pyc
 test.txt
+db.clj
+ANC-token-word.txt
