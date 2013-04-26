@@ -1,5 +1,5 @@
 (ns ling.core
-  (:use compojure.core ring.middleware.json-params)
+  (:use compojure.core ring.middleware.json)
   (:require [ling.words :as words]
             [clj-json.core :as json]
             [compojure.route :as route]))

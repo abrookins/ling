@@ -1,7 +1,6 @@
 (ns ling.words
   (:require [ling.conf :as conf]
-            [clojure.contrib.generic.math-functions :as math]
-            [clojure.contrib.string :as str])
+            [clojure.string :as str])
   (:import edu.stanford.nlp.process.DocumentPreprocessor))
 
 (def ^{:doc "A processor for parsing words and sentences from strings."}
@@ -46,7 +45,7 @@
   [word]
   (let [rank (get-frequency word)]
     (if-not (zero? rank)
-      (math/log rank)
+      (Math/log rank)
       0)))
 
 (defn count-word-matches

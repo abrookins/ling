@@ -1,6 +1,6 @@
 (ns ling.parsers
-  (:require [clojure.contrib.duck-streams :as streams]
-            [clojure.contrib.str-utils :as str-utils]))
+  (:require [clojure.java.io :as io]
+            [clojure.string :as str]))
 
 (defn parse-tokenized-anc-freqs
   "Parse word and frequency data from a tab-delimited file of American National
@@ -13,9 +13,10 @@
   the corpus, and 4.0604587E-7 is the word frequency ratio."
   [filename]
   (into {}
-        (map (fn [row] (let [[word _ frequency-ratio] (str-utils/re-split #"\t" row)]
-                (hash-map word
-                      (if-not (empty? frequency-ratio)
-                      ,(Float. frequency-ratio)
-                      0))))
-             (streams/read-lines filename))))
+    (map (fn [row] (let [[word _ frequency-ratio] (str/split #"\t" row)]
+                     (hash-map word
+                       (if-not (empty? frequency-ratio)
+                         ,(Float. frequency-ratio)
+                         0))))
+      (with-open [rdr (io/reader filename)]
+        (doseq [line (line-seq rdr)])))))
