@@ -6,3 +6,5 @@ target
 test.txt
 db.clj
 ANC-token-word.txt
+ling.iml
+pom.xml
